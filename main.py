@@ -1,7 +1,8 @@
 import random as r
+import timeit
 
 
-def init_doors(doors, token):               # randomly initializes the doors contents depending on the token
+def init_doors(token):               # randomly initializes the doors contents depending on the token
     if token == 0:
         doors = ["sheep", "sheep", "car"]
     elif token == 1:
@@ -31,16 +32,15 @@ def change_pick(doors, pick):               # changes the door's choice with the
             return new_pick
 
 
-attempts = 100000               # number of times that the test is repeated
+attempts = 100000              # number of times that the test is repeated
 wins = 0                        # stores the wins number
 loss = 0                        # stores the loss number
 
 while attempts != 0:
 
-    doors = []
     token = r.randrange(0, 1001) % 3
     # print(f"Token: {token}")
-    doors = init_doors(doors, token)
+    doors = init_doors(token)
     # print(doors)
 
     pick = choose_door(doors)
